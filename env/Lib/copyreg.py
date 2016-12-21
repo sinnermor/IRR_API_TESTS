@@ -96,7 +96,7 @@ def __newobj_ex__(cls, args, kwargs):
 def _slotnames(cls):
     """Return a list of slot names for a given class.
 
-    This needs to find slots defined by the class and its bases, so we
+    This needs to find slots defined by the class and its source, so we
     can't simply return the __slots__ attribute.  We must walk down
     the Method Resolution Order and concatenate the __slots__ of each
     class found there.  (This assumes classes don't modify their

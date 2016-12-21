@@ -607,7 +607,7 @@ def _c3_mro(cls, abcs=None):
 def _compose_mro(cls, types):
     """Calculates the method resolution order for a given class *cls*.
 
-    Includes relevant abstract base classes (with their respective bases) from
+    Includes relevant abstract base classes (with their respective source) from
     the *types* iterable. Uses a modified C3 linearization algorithm.
 
     """
@@ -617,7 +617,7 @@ def _compose_mro(cls, types):
         return (typ not in bases and hasattr(typ, '__mro__')
                                  and issubclass(cls, typ))
     types = [n for n in types if is_related(n)]
-    # Remove entries which are strict bases of other entries (they will end up
+    # Remove entries which are strict source of other entries (they will end up
     # in the MRO anyway.
     def is_strict_base(typ):
         for other in types:
@@ -637,7 +637,7 @@ def _compose_mro(cls, types):
         if not found:
             mro.append(typ)
             continue
-        # Favor subclasses with the biggest number of useful bases
+        # Favor subclasses with the biggest number of useful source
         found.sort(key=len, reverse=True)
         for sub in found:
             for subcls in sub:
