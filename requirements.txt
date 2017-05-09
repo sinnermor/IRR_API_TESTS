@@ -1,0 +1,4 @@
+pytest==2.9.0
+lxml-3.7.3-cp34-cp34m-manylinux1_x86_64.whl
+pytest_allure_adaptor
+pytest-logging
